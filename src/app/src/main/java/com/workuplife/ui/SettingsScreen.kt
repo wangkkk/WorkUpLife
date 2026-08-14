@@ -92,7 +92,18 @@ fun SettingsScreen(
                             onClick = {
                                 workDays = if (isSelected) workDays - day else workDays + day
                             },
-                            label = { Text(day.name.take(3)) },
+                            label = {
+                                val dayName = when (day) {
+                                    DayOfWeek.MONDAY -> "一"
+                                    DayOfWeek.TUESDAY -> "二"
+                                    DayOfWeek.WEDNESDAY -> "三"
+                                    DayOfWeek.THURSDAY -> "四"
+                                    DayOfWeek.FRIDAY -> "五"
+                                    DayOfWeek.SATURDAY -> "六"
+                                    DayOfWeek.SUNDAY -> "日"
+                                }
+                                Text(dayName)
+                            },
                             colors = FilterChipDefaults.filterChipColors(
                                 selectedContainerColor = NeonGreen,
                                 selectedLabelColor = Color.Black
